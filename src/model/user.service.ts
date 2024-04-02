@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class UserService {
@@ -9,20 +10,22 @@ export class UserService {
     @InjectRepository(User)
     private userRepository: Repository<User>,
   ) {}
-  async createUser(
-    mobileNumber: string,
-    language: string,
-    botID: string,
-  ): Promise<User> {
+  async createUser(mobileNumber: string, botID: string): Promise<User> {
     const existingUser = await this.findUserByMobileNumber(mobileNumber);
     if (existingUser) {
-      existingUser.language = language;
+      console.log('true12---');
+      existingUser.mobileNumber = mobileNumber;
       return this.userRepository.save(existingUser);
     } else {
+      console.log('123');
       const newUser = new User();
+      console.log(typeof newUser.mobileNumber); // This line may not be very useful
       newUser.mobileNumber = mobileNumber;
-      newUser.language = language;
-      newUser.botID = botID;
+      newUser.id = uuidv4(); // Corrected property assignment
+      newUser.botID = botID; // Corrected property assignment
+      newUser.userContext = ''; // Corrected property assignment
+      newUser.buttonResponse = ''; // Corrected property assignment
+      newUser.language = 'English'; // Corrected property assignment
       return this.userRepository.save(newUser);
     }
   }

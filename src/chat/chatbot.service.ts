@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import IntentClassifier from '../intent/intent.classifier';
 import { MessageService } from 'src/message/message.service';
 import { UserService } from 'src/model/user.service';
+import { localisedStrings as english } from '../i18n/en/localised-strings';
+import { LocalizationService } from '../localization/localization.service';
 
 @Injectable()
 export class ChatbotService {
@@ -20,21 +22,35 @@ export class ChatbotService {
   }
 
   public async processMessage(body: any): Promise<any> {
-    const { from, text } = body;
+    const { from, text, button_response } = body;
+    console.log(button_response);
     let botID = process.env.BOT_ID;
-    const userData = await this.userService.findUserByMobileNumber(from);
-    const { intent, entities } = this.intentClassifier.getIntent(text.body);
-    if (userData.language === 'english' || userData.language === 'hindi') {
-      await this.userService.saveUser(userData);
+    let UserData = await this.userService.findUserByMobileNumber(from);
+    console.log("UserData: ",UserData);
+
+    if (!(UserData)){
+      console.log("true----");
+      console.log(typeof(from));
+      await this.userService.createUser(from,botID);
     }
-    if (intent === 'greeting') {
+    const userData = await this.userService.findUserByMobileNumber(from);
+    const localisedStrings = LocalizationService.getLocalisedString(
+      userData.language,
+    );
+
+    if (!(button_response) && text.body === 'hi') {
       this.message.sendWelcomeMessage(from, userData.language);
-    } else if (intent === 'select_language') {
-      const selectedLanguage = entities[0];
-      const userData = await this.userService.findUserByMobileNumber(from);
-      userData.language = selectedLanguage;
-      await this.userService.saveUser(userData);
-      this.message.sendLanguageChangedMessage(from, userData.language);
+      this.message.categoryButtons(from,userData.language);
+    } 
+    else if (button_response &&  localisedStrings.category_list.includes(button_response.body)){
+      console.log("button response true");
+      // const cardlength = await this.message.sendNewsAsArticleCarousel(
+      //   userData.language,
+      //   botID,
+      //   from,
+      //   button_response.body,
+      //   1,
+      // );
     }
     return 'ok';
   }
