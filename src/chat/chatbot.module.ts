@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import ChatbotService from './chatbot.service';
+import {ChatbotService} from './chatbot.service';
 import { SwiftchatModule } from 'src/swiftchat/swiftchat.module'; // Correct the import path as necessary
 import IntentClassifier from '../intent/intent.classifier';
 import { UserService } from 'src/model/user.service';

@@ -4,62 +4,57 @@ export const localisedStrings = {
   language_hindi: 'हिन्दी',
   language_english: 'English',
   language_changed: 'Language changed to English',
-  category_button_body: 'Please sekect a news category',
-  category_list: ['category1','category2', 'category3'],
-  sub_category_list: ['sub category 1','sub category 2','sub category 3','sub category 4','sub category 5','sub category 6'],
+  category_button_body: 'Please select a news category',
   category_buttons: [
     {
       type: 'solid',
-      body: 'category 1',
-      reply: 'category1',
+      body: 'Sports',
+      reply: 'Sports',
     },
     {
       type: 'solid',
-      body: 'category2',
-      reply: 'category2',
+      body: 'Education',
+      reply: 'Education',
     },
     {
       type: 'solid',
-      body: 'category 3',
-      reply: 'category3',
+      body: 'Entertainment',
+      reply: 'Entertainment',
     }
   ],
 
-  category1: [
+  Sports: [
     {
       type: 'solid',
-      body: 'sub category 1',
-      reply: 'sub category 1',
-    },
-    {
-      type: 'solid',
-      body: 'sub category 2',
-      reply: 'sub category 2',
-    },
+      body: 'Sports',
+      reply: 'Sports',
+    }
   ],
-  category2: [
+  Education: [
     {
       type: 'solid',
-      body: 'sub category 3',
-      reply: 'sub category 3',
-    },
-    {
-      type: 'solid',
-      body: 'sub category 4',
-      reply: 'sub category 4',
-    },
+      body: 'Education',
+      reply: 'Education',
+    }
   ],
 
-  category3: [
+  Entertainment: [
     {
       type: 'solid',
-      body: 'sub category 5',
-      reply: 'sub category 5',
-    },
-    {
-      type: 'solid',
-      body: 'sub category 6',
-      reply: 'sub category 6',
-    },
+      body: 'Entertainment',
+      reply: 'Entertainment',
+    }
   ],
+
+
+  categories: {
+    "Sports": "49",
+    "Entertainment": "48",
+    "Education": "11",
+  },
+
+  sub_category_list: ['Sports','Entertainment','Education'],
+  category_list: ['Sports','Entertainment','Education'],
+
+
 };

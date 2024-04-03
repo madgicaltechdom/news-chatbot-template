@@ -22,37 +22,43 @@ export class ChatbotService {
   }
 
   public async processMessage(body: any): Promise<any> {
-    const { from, text, button_response } = body;
-    console.log(button_response);
-    let botID = process.env.BOT_ID;
-    let UserData = await this.userService.findUserByMobileNumber(from);
-    console.log("UserData: ",UserData);
+    try {
+      const { from, text, button_response } = body;
+      let botID = process.env.BOT_ID;
+      let UserData = await this.userService.findUserByMobileNumber(from);
 
-    if (!(UserData)){
-      console.log("true----");
-      console.log(typeof(from));
-      await this.userService.createUser(from,botID);
-    }
-    const userData = await this.userService.findUserByMobileNumber(from);
-    const localisedStrings = LocalizationService.getLocalisedString(
-      userData.language,
-    );
+      if (!(UserData)){
+        await this.userService.createUser(from,botID);
+      }
+      const userData = await this.userService.findUserByMobileNumber(from);
+      const localisedStrings = await LocalizationService.getLocalisedString(
+        userData.language,
+      );
 
-    if (!(button_response) && text.body === 'hi') {
-      this.message.sendWelcomeMessage(from, userData.language);
-      this.message.categoryButtons(from,userData.language);
-    } 
-    else if (button_response &&  localisedStrings.category_list.includes(button_response.body)){
-      console.log("button response true");
-      // const cardlength = await this.message.sendNewsAsArticleCarousel(
-      //   userData.language,
-      //   botID,
-      //   from,
-      //   button_response.body,
-      //   1,
-      // );
+      if (!(button_response) && text.body === 'hi') {
+        this.message.sendWelcomeMessage(from, userData.language);
+        this.message.categoryButtons(from,userData.language);
+      } 
+      else if (button_response &&  (localisedStrings.category_list.includes(button_response.body)||localisedStrings.sub_category_list.includes(button_response.body))){
+        let id = await this.message.getCategoryID(button_response.body,userData.language);
+        console.log("id: ", id);
+        const cardlength = await this.message.sendNewsAsArticleCarousel(
+          userData.language,
+          botID,
+          from,
+          id,
+          button_response.body,
+          1,
+          2,
+        );
+        console.log("button_response: ",button_response.body);
+
+        await this.message.sub_categoryButtons(from,userData.language,button_response.body);
+      }
+      return 'ok';
+    } catch (error) {
+      console.error('Error processing message:', error);
+      throw error; // Re-throwing the error for global error handling if needed
     }
-    return 'ok';
   }
 }
-export default ChatbotService;

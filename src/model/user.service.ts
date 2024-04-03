@@ -13,13 +13,10 @@ export class UserService {
   async createUser(mobileNumber: string, botID: string): Promise<User> {
     const existingUser = await this.findUserByMobileNumber(mobileNumber);
     if (existingUser) {
-      console.log('true12---');
       existingUser.mobileNumber = mobileNumber;
       return this.userRepository.save(existingUser);
     } else {
-      console.log('123');
       const newUser = new User();
-      console.log(typeof newUser.mobileNumber); // This line may not be very useful
       newUser.mobileNumber = mobileNumber;
       newUser.id = uuidv4(); // Corrected property assignment
       newUser.botID = botID; // Corrected property assignment
