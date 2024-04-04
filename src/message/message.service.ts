@@ -29,15 +29,8 @@ export abstract class MessageService {
   abstract sendWelcomeMessage(from: string, language: string);
   abstract sendLanguageChangedMessage(from: string, language: string);
   abstract categoryButtons(from: string, language: string);
-  abstract sendNewsAsArticleCarousel(
-    language: string,
-    botId: string,
-    recipientMobile: string,
-    categoryId: string,
-    Tags: string,
-    page: number,
-    articlesPerPage: number,
-  );
   abstract getCategoryID(categoryName: string, language: string);
   abstract sub_categoryButtons(from: string, language: string, categoryName: string);
+  abstract goBackToMainMenu(from: string, language: string);
+  abstract languageButtons(from: string, language: string);
 }

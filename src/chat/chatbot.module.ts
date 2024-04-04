@@ -9,13 +9,14 @@ import { UserModule } from 'src/model/user.module';
 import { MockUserService } from 'src/model/mockuser.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/model/user.entity';
-
+import { KhabriMediaNewsService } from 'src/khabriMedia/newsFetching';
 @Module({
   imports: [SwiftchatModule,  TypeOrmModule.forFeature([User])], // Import SwiftchatModule
   providers: [
     ChatbotService,
     IntentClassifier,
     UserService,
+    KhabriMediaNewsService,
     // {
 
     //   provide: UserService,
