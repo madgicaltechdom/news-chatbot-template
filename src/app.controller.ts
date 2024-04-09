@@ -24,7 +24,7 @@ export class AppController {
     });
   }  
 
-  @Post('/message')
+  @Post('/newschatbot')
   async handelUserMessage(@Body() body, @Res() res): Promise<void> {
     try {
       const { from, text } = body;

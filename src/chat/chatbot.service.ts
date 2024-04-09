@@ -109,11 +109,8 @@ export class ChatbotService {
         button_response &&
         localisedStrings.languageButtons.includes(button_response.body)
       ) {
-        console.log("Yes");
         await this.userService.saveLanguage(from, botID, button_response.body);
-        console.log("Done");
         await this.message.categoryButtons(from, button_response.body);
-        console.log("Buttons saved")
       }
       return 'ok';
     } catch (error) {
