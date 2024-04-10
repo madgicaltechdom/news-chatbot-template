@@ -63,7 +63,6 @@ describe('AppController', () => {
       buttonResponse: 'शिक्षा',
       language: 'English',
     });
-    // jest.spyOn(userService.userRepository, 'save').mockResolvedValue(undefined);
 
     const body = {
       from: '1234567890',
