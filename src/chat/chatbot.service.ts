@@ -111,7 +111,7 @@ export class ChatbotService {
       return 'ok';
     } catch (error) {
       console.error('Error processing message:', error);
-      throw error; // Re-throwing the error for global error handling if needed
+      throw error;
     }
   }
 }
