@@ -34,7 +34,7 @@ export class ChatbotService {
         userData.language,
       );
 
-      if (!persistent_menu_response && !button_response && localisedStrings.greetingMessages.includes(text.body === 'hi')) {
+      if (!persistent_menu_response && !button_response && localisedStrings.greetingMessages.includes(text.body)) {
         this.message.sendWelcomeMessage(from, userData.language);
         this.message.categoryButtons(from, userData.language);
       } else if (
