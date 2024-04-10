@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
+    public userRepository: Repository<User>,
   ) {}
   async createUser(mobileNumber: string, botID: string): Promise<User> {
     const existingUser = await this.findUserByMobileNumber(mobileNumber);

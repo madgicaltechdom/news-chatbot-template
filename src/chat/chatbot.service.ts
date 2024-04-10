@@ -1,24 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import IntentClassifier from '../intent/intent.classifier';
-import { MessageService } from 'src/message/message.service';
-import { UserService } from 'src/model/user.service';
+import { MessageService } from '../message/message.service';
+import { UserService } from '../model/user.service';
 import { localisedStrings as english } from '../i18n/en/localised-strings';
 import { LocalizationService } from '../localization/localization.service';
-import { KhabriMediaNewsService } from 'src/khabriMedia/newsFetching';
+import { KhabriMediaNewsService } from '../khabriMedia/newsFetching';
 @Injectable()
 export class ChatbotService {
-  private readonly intentClassifier: IntentClassifier;
   private readonly message: MessageService;
   private readonly userService: UserService;
   private readonly khabriMediaNewsService: KhabriMediaNewsService;
 
   constructor(
-    intentClassifier: IntentClassifier,
     message: MessageService,
     userService: UserService,
     khabriMediaService: KhabriMediaNewsService,
   ) {
-    this.intentClassifier = intentClassifier;
     this.message = message;
     this.userService = userService;
     this.khabriMediaNewsService = khabriMediaService;
