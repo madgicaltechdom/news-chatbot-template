@@ -5,14 +5,12 @@ import { UserService } from '../src/model/user.service';
 import * as dotenv from 'dotenv';
 import { MessageService } from '../src/message/message.service';
 import { SwiftchatMessageService } from '../src/swiftchat/swiftchat.service';
-import axios from 'axios';
 import { localisedStrings as english } from '../src/i18n/en/localised-strings';
 import { KhabriMediaNewsService } from '../src/khabriMedia/newsFetching';
-import { InjectRepository, getRepositoryToken } from '@nestjs/typeorm';
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../src/model/user.entity';
 import { LocalizationService } from '../src/localization/localization.service';
-import { Body } from '@nestjs/common';
 
 dotenv.config();
 
@@ -131,7 +129,7 @@ describe('AppController', () => {
       .spyOn(khabriMediaService, 'sendNewsAsArticleCarousel')
       .mockResolvedValueOnce(2);
     jest
-      .spyOn(messageService, 'sub_categoryButtons')
+      .spyOn(messageService, 'subCategoryButtons')
       .mockResolvedValueOnce({ id: '83d9db82-b3b0-4802-b2d8-a92f481435c6' });
 
     // Act
@@ -158,7 +156,7 @@ describe('AppController', () => {
       1,
       2,
     );
-    expect(messageService.sub_categoryButtons).toHaveBeenCalledWith(
+    expect(messageService.subCategoryButtons).toHaveBeenCalledWith(
       '1234567890',
       'English',
       'Sports',
@@ -305,12 +303,12 @@ describe('AppController', () => {
       language: 'English',
     });
 
-    jest.spyOn(messageService, 'sub_categoryButtons');
+    jest.spyOn(messageService, 'subCategoryButtons');
     // Act
     await chatbotService.processMessage(body);
 
     // Assert
-    expect(messageService.sub_categoryButtons).toHaveBeenCalledWith(
+    expect(messageService.subCategoryButtons).toHaveBeenCalledWith(
       '1234567890',
       'English',
       'Sports',

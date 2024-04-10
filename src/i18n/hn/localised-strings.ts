@@ -1,13 +1,10 @@
 export const localisedStrings = {
   welcomeMessage: 'नमस्ते! न्यूज़ चैटबॉट टेम्पलेट में आपका स्वागत है',
-  seeMoreMessage: 'और देखें',
   language_hindi: 'हिन्दी',
-  language_english: 'अंग्रेज़ी',
-  language_changed: 'भाषा अंग्रेज़ी में बदल दी गई है',
-  category_button_body: 'कृपया एक समाचार श्रेणी का चयन करें',
+  categoryButtonBody: 'कृपया एक समाचार श्रेणी का चयन करें',
   languageBody: 'कृपया एक भाषा का चयन करें',
   languageButtons: ['Hindi', 'English'],
-  category_buttons: [
+  categoryButtons: [
     {
       type: 'solid',
       body: 'खेल',
@@ -58,11 +55,11 @@ export const localisedStrings = {
   },
   
 
-  sub_category_list: ['खेल1', 'मनोरंजन1', 'शिक्षा1'],
-  category_list: ['खेल', 'मनोरंजन', 'शिक्षा'],
-  back_to_main_menu: ['मुख्य मेनू पर वापस जाएं', 'अन्य श्रेणियाँ ब्राउज़ करें'],
+  subCategoryList: ['खेल1', 'मनोरंजन1', 'शिक्षा1'],
+  categoryList: ['खेल', 'मनोरंजन', 'शिक्षा'],
+  backToMainMenu: ['मुख्य मेनू पर वापस जाएं', 'अन्य श्रेणियाँ ब्राउज़ करें'],
 
-  go_back_to_main_menu: [
+  goBackToMainMenu: [
     {
       type: 'solid',
       body: 'मुख्य मेनू पर वापस जाएं',

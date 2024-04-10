@@ -1,13 +1,10 @@
 export const localisedStrings = {
   welcomeMessage: 'Hi Welcome to the News ChatBot Template',
-  seeMoreMessage: 'See More Data',
   language_hindi: 'हिन्दी',
-  language_english: 'English',
-  language_changed: 'Language changed to English',
-  category_button_body: 'Please select a news category',
+  categoryButtonBody: 'Please select a news category',
   languageBody: 'Please select a language',
   languageButtons: ['Hindi','English'],
-  category_buttons: [
+  categoryButtons: [
     {
       type: 'solid',
       body: 'Sports',
@@ -57,11 +54,11 @@ export const localisedStrings = {
     Education1: '11',
   },
 
-  sub_category_list: ['Sports1', 'Entertainment1', 'Education1'],
-  category_list: ['Sports', 'Entertainment', 'Education'],
-  back_to_main_menu: ['Go Back To Main Menu', 'Browse Other Categories'],
+  subCategoryList: ['Sports1', 'Entertainment1', 'Education1'],
+  categoryList: ['Sports', 'Entertainment', 'Education'],
+  backToMainMenu: ['Go Back To Main Menu', 'Browse Other Categories'],
 
-  go_back_to_main_menu: [
+  goBackToMainMenu: [
     {
       type: 'solid',
       body: 'Go Back To Main Menu',

@@ -39,10 +39,10 @@ export class ChatbotService {
         this.message.categoryButtons(from, userData.language);
       } else if (
         button_response &&
-        (localisedStrings.category_list.includes(button_response.body) ||
-          localisedStrings.sub_category_list.includes(button_response.body))
+        (localisedStrings.categoryList.includes(button_response.body) ||
+          localisedStrings.subCategoryList.includes(button_response.body))
       ) {
-        if (localisedStrings.category_list.includes(button_response.body)) {
+        if (localisedStrings.categoryList.includes(button_response.body)) {
           let id = await this.message.getCategoryID(
             button_response.body,
             userData.language,
@@ -56,7 +56,7 @@ export class ChatbotService {
             english.articleNumbers[0],
             english.articleNumbers[1],
           );
-          await this.message.sub_categoryButtons(
+          await this.message.subCategoryButtons(
             from,
             userData.language,
             button_response.body,
@@ -67,7 +67,7 @@ export class ChatbotService {
             button_response.body,
           );
         } else if (
-          localisedStrings.sub_category_list.includes(button_response.body)
+          localisedStrings.subCategoryList.includes(button_response.body)
         ) {
           let id = await this.message.getCategoryID(
             button_response.body,
@@ -86,14 +86,14 @@ export class ChatbotService {
         }
       } else if (
         button_response &&
-        localisedStrings.back_to_main_menu.includes(button_response.body)
+        localisedStrings.backToMainMenu.includes(button_response.body)
       ) {
-        if (button_response.body === localisedStrings.back_to_main_menu[0]) {
+        if (button_response.body === localisedStrings.backToMainMenu[0]) {
           this.message.categoryButtons(from, userData.language);
         } else if (
-          button_response.body === localisedStrings.back_to_main_menu[1]
+          button_response.body === localisedStrings.backToMainMenu[1]
         ) {
-          await this.message.sub_categoryButtons(
+          await this.message.subCategoryButtons(
             from,
             userData.language,
             userData.buttonResponse,

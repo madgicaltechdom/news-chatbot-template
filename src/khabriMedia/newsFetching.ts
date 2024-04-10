@@ -121,7 +121,6 @@ async sendNewsAsArticleCarousel(
         );
       } catch (error) {
         console.log('error: ', error);
-        // this.handleApiError(error);
       }
 
       return cards.length;

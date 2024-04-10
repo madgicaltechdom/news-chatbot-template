@@ -6,28 +6,6 @@ import { MessageService } from '../message/message.service';
 
 dotenv.config();
 
-interface Card {
-  tags: string[];
-  title: string;
-  description: string;
-  actions: {
-    button_text: string;
-    type: string;
-    website: {
-      title: string;
-      payload: string;
-      url: string;
-    };
-  }[];
-  header?: {
-    type: string;
-    image: {
-      url: string;
-      body: string;
-    };
-  };
-}
-
 @Injectable()
 export class SwiftchatMessageService extends MessageService {
   private botId = process.env.BOT_ID;
@@ -76,7 +54,6 @@ export class SwiftchatMessageService extends MessageService {
 
   async categoryButtons(from: string, language: string): Promise<void> {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    const url = `${this.apiUrl}/${this.botId}/messages`;
     const messageData = {
       to: from,
       type: 'button',
@@ -84,15 +61,15 @@ export class SwiftchatMessageService extends MessageService {
         body: {
           type: 'text',
           text: {
-            body: localisedStrings.category_button_body,
+            body: localisedStrings.categoryButtonBody,
           },
         },
-        buttons: localisedStrings.category_buttons,
+        buttons: localisedStrings.categoryButtons,
         allow_custom_response: false,
       },
     };
     try {
-      const response = await axios.post(url, messageData, {
+      const response = await axios.post(this.baseUrl, messageData, {
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
@@ -111,9 +88,8 @@ export class SwiftchatMessageService extends MessageService {
     return category ? category[1] : null;
   };
 
-  async sub_categoryButtons(from: string, language: string, categoryName: string): Promise<void> {
+  async subCategoryButtons(from: string, language: string, categoryName: string): Promise<void> {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    const url = `${this.apiUrl}/${this.botId}/messages`;
     const messageData = {
       to: from,
       type: 'button',
@@ -121,7 +97,7 @@ export class SwiftchatMessageService extends MessageService {
         body: {
           type: 'text',
           text: {
-            body: localisedStrings.category_button_body,
+            body: localisedStrings.categoryButtonBody,
           },
         },
         buttons: localisedStrings[categoryName],
@@ -129,7 +105,7 @@ export class SwiftchatMessageService extends MessageService {
       },
     };
     try {
-      const response = await axios.post(url, messageData, {
+      const response = await axios.post(this.baseUrl, messageData, {
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
@@ -144,7 +120,6 @@ export class SwiftchatMessageService extends MessageService {
 
   async goBackToMainMenu(from: string, language: string): Promise<void> {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    const url = `${this.apiUrl}/${this.botId}/messages`;
     const messageData = {
       to: from,
       type: 'button',
@@ -155,12 +130,12 @@ export class SwiftchatMessageService extends MessageService {
             body: localisedStrings.backMainMenuMessage,
           },
         },
-        buttons: localisedStrings.go_back_to_main_menu,
+        buttons: localisedStrings.goBackToMainMenu,
         allow_custom_response: false,
       },
     };
     try {
-      const response = await axios.post(url, messageData, {
+      const response = await axios.post(this.baseUrl, messageData, {
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
@@ -174,7 +149,6 @@ export class SwiftchatMessageService extends MessageService {
 
   async languageButtons(from: string, language: string): Promise<void> {
     const localisedStrings = LocalizationService.getLocalisedString(language);
-    const url = `${this.apiUrl}/${this.botId}/messages`;
     const messageData = {
       to: from,
       type: 'button',
@@ -201,7 +175,7 @@ export class SwiftchatMessageService extends MessageService {
       },
     };
     try {
-      const response = await axios.post(url, messageData, {
+      const response = await axios.post(this.baseUrl, messageData, {
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',

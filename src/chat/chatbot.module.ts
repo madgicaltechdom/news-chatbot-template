@@ -5,8 +5,6 @@ import IntentClassifier from '../intent/intent.classifier';
 import { UserService } from 'src/model/user.service';
 import { SwiftchatMessageService } from 'src/swiftchat/swiftchat.service';
 import { MessageService } from 'src/message/message.service';
-import { UserModule } from 'src/model/user.module';
-import { MockUserService } from 'src/model/mockuser.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/model/user.entity';
 import { KhabriMediaNewsService } from 'src/khabriMedia/newsFetching';
@@ -17,11 +15,6 @@ import { KhabriMediaNewsService } from 'src/khabriMedia/newsFetching';
     IntentClassifier,
     UserService,
     KhabriMediaNewsService,
-    // {
-
-    //   provide: UserService,
-    //   useClass: UserService,
-    // },
     {
       provide: MessageService,
       useClass: SwiftchatMessageService,
