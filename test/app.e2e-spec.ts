@@ -34,7 +34,7 @@ describe('AppController', () => {
             sendLanguageChangedMessage: jest.fn(),
             categoryButtons: jest.fn(),
             getCategoryID: jest.fn(),
-            sub_categoryButtons: jest.fn(),
+            subCategoryButtons: jest.fn(),
             goBackToMainMenu: jest.fn(),
             languageButtons: jest.fn(),
           }),
