@@ -1,9 +1,10 @@
 export const localisedStrings = {
-  welcomeMessage: 'Hi Welcome to the News ChatBot Template',
+  welcomeMessage: 'Hi! 👋 Welcome to the News ChatBot Template 📰✨',
   language_hindi: 'हिन्दी',
-  categoryButtonBody: 'Please select a news category',
-  languageBody: 'Please select a language',
+  categoryButtonBody: '🗞️Please select a news category',
+  languageBody: 'Please select a language 👉',
   languageButtons: ['Hindi','English'],
+  
   categoryButtons: [
     {
       type: 'solid',
