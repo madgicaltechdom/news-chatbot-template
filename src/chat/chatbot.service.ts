@@ -42,6 +42,7 @@ export class ChatbotService {
         (localisedStrings.categoryList.includes(button_response.body) ||
           localisedStrings.subCategoryList.includes(button_response.body))
       ) {
+        
         if (localisedStrings.categoryList.includes(button_response.body)) {
           let id = await this.message.getCategoryID(
             button_response.body,
