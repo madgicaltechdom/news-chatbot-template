@@ -1,5 +1,11 @@
 # News Chatbot Template
 
+**Hook:** News chatbots repeat boilerplate — every new topic requires setup.
+
+**Body:** Reusable news chatbot template.
+
+**Closer:** One-button news bot — plug in your feed.
+
 Welcome to our developer guide for crafting your custom news chatbot using our intuitive template! This document will lead you through the straightforward process of tailoring the template to your specifications and constructing your unique news chatbot. Let's dive in and begin building!
 
 ## Prerequisites
